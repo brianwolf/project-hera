@@ -1,4 +1,4 @@
-# :card_index_dividers: hera
+# :card_index_dividers: Hera
 
 > Diosa griega de la familia de versiones de tu proyecto
 
