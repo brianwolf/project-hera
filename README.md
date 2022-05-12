@@ -9,7 +9,7 @@
 * python 3.9
 * virtualenv
 
-## :tada: Uso API web
+## :tada: Ambiente de Python
 
 Levantar el ambiente
 
@@ -34,7 +34,7 @@ Se lo puede usar en modo script ejecutando:
 ```bash
 make c
 
-./hera example/pipeline_ejemplo.yaml
+./hera 1.1.2 -m 1
 ```
 
 Se puede ejecutar el siguiente comando para instalarlo en el sistema
