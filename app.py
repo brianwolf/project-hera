@@ -1,40 +1,53 @@
 #!/usr/local/bin/python
 import argparse
-from distutils.log import error
+import sys
+
+VERSION = "1.0.0"
+
 
 # VARIABLES
 # ----------------------------------------
-parser = argparse.ArgumentParser()
 
-parser.add_argument('version', help='version a modificar')
-parser.add_argument('-M', '--major', help='Major', default=0)
-parser.add_argument('-m', '--menor', help='Menor', default=0)
-parser.add_argument('-p', '--patch', help='Patch', default=0)
+if sys.argv[1] == '-v':
+    print(VERSION)
+    sys.exit(0)
+
+parser = argparse.ArgumentParser(
+    description="Calculate new version",
+    usage="hera <version in format int.int.int> [-M int] [-m int] [-p int]"
+)
+
+parser.add_argument("-v", action="store_true", help="binary version")
+parser.add_argument('version', help='base version')
+parser.add_argument('-M', help='Major', default=0)
+parser.add_argument('-m', help='Menor', default=0)
+parser.add_argument('-p', help='Patch', default=0)
 
 args = parser.parse_args()
 
 
 try:
-    major = int(args.major)
-    minor = int(args.menor)
-    patch = int(args.patch)
+    major = int(args.M)
+    minor = int(args.m)
+    patch = int(args.p)
     version = args.version
+
 except Exception as e:
-    print('Tipo incorrecto, debe ser de tipo int')
-    exit(1)
+    print('Error on type then must be int')
+    sys.exit(1)
 
 
 # SCRIPT
 # ----------------------------------------
 
-
 try:
     version_major = int(str(version).split('.')[0])
     version_minor = int(str(version).split('.')[1])
     version_patch = int(str(version).split('.')[2])
+
 except Exception as e:
-    print('Formato incorrecto, debe ser: int.int.int')
-    exit(1)
+    print('Error ono format then must be: int.int.int')
+    sys.exit(1)
 
 
 if major != 0:
